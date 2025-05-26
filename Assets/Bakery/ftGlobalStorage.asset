@@ -688,7 +688,10 @@ MonoBehaviour:
   assetList:
   - Assets/Bakery/examples/content/sponza/bush.FBX
   - Assets/Bakery/examples/content/floor_lamp.FBX
-  uvOverlapAssetList: 00000000ffffffff
+  - Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/AllSky_DemoEnvironment02.fbx
+  - Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/AllSky_DemoEnvironment_Light.fbx
+  - Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/AllSky_DemoEnvironment.fbx
+  uvOverlapAssetList: 00000000ffffffff000000000000000000000000
   xatlasWarningShown: 1
   foundCompatibleSetup: 1
   gpuName: NVIDIA GeForce RTX 3060
