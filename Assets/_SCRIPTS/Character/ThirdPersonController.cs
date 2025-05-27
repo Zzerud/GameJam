@@ -35,7 +35,9 @@ public class ThirdPersonController : MonoBehaviour
     [SerializeField] private float minPitch = -30f, maxPitch = 60f;
     private float pitch = 0;
 
+
     private Vector3 velocity;
+    private bool isGrounded;
 
     private void Awake()
     {
@@ -51,7 +53,7 @@ public class ThirdPersonController : MonoBehaviour
     private void Update()
     {
         HandleMovement();
-        HandleJump();
+        GroundCheck();
     }
     private void LateUpdate()
     {
@@ -115,18 +117,22 @@ public class ThirdPersonController : MonoBehaviour
             float speed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
             cc.Move(moveDir * speed * Time.deltaTime);
         }
-    }
-    private void HandleJump()
-    {
-        if (cc.isGrounded)
-        {
-            if (Input.GetButtonDown("Jump"))
-                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            else
-                velocity.y = -0.5f;
-        }
 
+        if (isGrounded)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            if (velocity.y < 0)
+                velocity.y = -2f;
+
+        }
         velocity.y += gravity * Time.deltaTime;
         cc.Move(velocity * Time.deltaTime);
+    }
+
+    private void GroundCheck()
+    {
+        RaycastHit hit;
+        isGrounded = Physics.SphereCast(transform.position, 0.3f, Vector3.down, out hit, cc.height / 2 + 0.1f, LayerMask.GetMask("Default"));
     }
 }
