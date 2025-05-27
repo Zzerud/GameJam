@@ -691,7 +691,37 @@ MonoBehaviour:
   - Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/AllSky_DemoEnvironment02.fbx
   - Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/AllSky_DemoEnvironment_Light.fbx
   - Assets/AllSkyFree/_AllSkyFreeDemoEnvironment/AllSky_DemoEnvironment.fbx
-  uvOverlapAssetList: 00000000ffffffff000000000000000000000000
+  - Assets/Falltrees/Models/Tree03.FBX
+  - Assets/Falltrees/Models/Tree01.FBX
+  - Assets/Falltrees/Models/Tree04.FBX
+  - Assets/Falltrees/Models/Tree13.FBX
+  - Assets/Falltrees/Models/Tree06.FBX
+  - Assets/Falltrees/Models/Tree02.FBX
+  - Assets/Falltrees/Models/Tree15.FBX
+  - Assets/Falltrees/Models/Tree12.FBX
+  - Assets/Falltrees/Models/Tree08.FBX
+  - Assets/Falltrees/Models/Tree09.FBX
+  - Assets/Falltrees/Models/Tree11.FBX
+  - Assets/Falltrees/Models/Tree05.FBX
+  - Assets/Falltrees/Models/Tree10.FBX
+  - Assets/Falltrees/Models/Tree14.FBX
+  - Assets/Falltrees/Models/Tree07.FBX
+  - Assets/_MODELS/Falltrees/Models/Tree03.FBX
+  - Assets/_MODELS/Falltrees/Models/Tree01.FBX
+  - Assets/_MODELS/Falltrees/Models/Tree04.FBX
+  - Assets/_MODELS/Falltrees/Models/Tree13.FBX
+  - Assets/_MODELS/Falltrees/Models/Tree06.FBX
+  - Assets/_MODELS/Falltrees/Models/Tree02.FBX
+  - Assets/_MODELS/Falltrees/Models/Tree15.FBX
+  - Assets/_MODELS/Falltrees/Models/Tree12.FBX
+  - Assets/_MODELS/Falltrees/Models/Tree08.FBX
+  - Assets/_MODELS/Falltrees/Models/Tree09.FBX
+  - Assets/_MODELS/Falltrees/Models/Tree11.FBX
+  - Assets/_MODELS/Falltrees/Models/Tree05.FBX
+  - Assets/_MODELS/Falltrees/Models/Tree10.FBX
+  - Assets/_MODELS/Falltrees/Models/Tree14.FBX
+  - Assets/_MODELS/Falltrees/Models/Tree07.FBX
+  uvOverlapAssetList: 00000000ffffffff000000000000000000000000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000
   xatlasWarningShown: 1
   foundCompatibleSetup: 1
   gpuName: NVIDIA GeForce RTX 3060
