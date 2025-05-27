@@ -51,6 +51,7 @@ public class ThirdPersonController : MonoBehaviour
     private void Update()
     {
         HandleMovement();
+        HandleJump();
     }
     private void LateUpdate()
     {
@@ -114,10 +115,18 @@ public class ThirdPersonController : MonoBehaviour
             float speed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
             cc.Move(moveDir * speed * Time.deltaTime);
         }
-
+    }
+    private void HandleJump()
+    {
+        if (cc.isGrounded)
+        {
+            if (Input.GetButtonDown("Jump"))
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            else
+                velocity.y = -0.5f;
+        }
 
         velocity.y += gravity * Time.deltaTime;
         cc.Move(velocity * Time.deltaTime);
     }
-
 }
