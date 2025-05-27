@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class TerrainTreesManager : MonoBehaviour
 {
-    [SerializeField] private Terrain[] terrains;
     [SerializeField] private GameObject colliderPrefab, collidersParents;
     private void Start()
     {
+        Terrain[] terrains = FindObjectsOfType<Terrain>();
+
         for (int i = 0; i < terrains.Length; i++)
         {
             TreeInstance[] trees = terrains[i].terrainData.treeInstances;
