@@ -11,20 +11,22 @@ public class FriendNPCBehaviour : MonoBehaviour
 
     private bool interaction = false;
     public bool isTalked = false;
-    private float defaultRotation;
+    private Quaternion defaultRotation;
 
     private void Start()
     {
-        defaultRotation = transform.rotation.y;
+        defaultRotation = transform.rotation;
         player = ThirdPersonController.instance.transform;
     }
     private void Update()
     {
         if (interaction) WatchWhileTalk();
+        else ReturnToDefault();
     }
     public void StartTalk()
     {
         interaction = true;
+        isTalked = true;
         StartCoroutine(TypeText());
     }
     private IEnumerator TypeText()
@@ -38,7 +40,7 @@ public class FriendNPCBehaviour : MonoBehaviour
         yield return new WaitForSeconds(2);
         text.text = "";
         interaction = false;
-        isTalked = true;
+        
     }
     private void WatchWhileTalk()
     {
@@ -46,5 +48,13 @@ public class FriendNPCBehaviour : MonoBehaviour
         dir.y = 0;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
+    }
+    private void ReturnToDefault()
+    {
+        transform.rotation = Quaternion.Slerp(transform.rotation, defaultRotation, Time.deltaTime * 10);
+        if (Quaternion.Angle(transform.rotation, defaultRotation) < 1)
+        {
+            transform.rotation = defaultRotation;
+        }
     }
 }
