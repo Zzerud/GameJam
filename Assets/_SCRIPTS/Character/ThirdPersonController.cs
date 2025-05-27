@@ -37,7 +37,7 @@ public class ThirdPersonController : MonoBehaviour
 
     private Vector3 velocity;
 
-    private void Start()
+    private void Awake()
     {
         if (instance == null)
             instance = this;
