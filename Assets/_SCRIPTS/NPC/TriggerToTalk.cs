@@ -6,15 +6,16 @@ public class TriggerToTalk : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player" && !manager.isTalked)
+        if (other.gameObject.CompareTag("Player") && !manager.isTalked)
         {
             CanvasController.instance.InteractState(true);
             CanvasController.instance.currentNPC = manager;
+            CanvasController.instance.interactsState = CanvasController.InteractStates.Talks;
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.CompareTag("Player"))
         {
             CanvasController.instance.InteractState(false);
             CanvasController.instance.currentNPC = null;
