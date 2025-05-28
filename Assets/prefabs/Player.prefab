@@ -441,6 +441,7 @@ MonoBehaviour:
   cameraPivot: {fileID: 5144656949282205273}
   cameraPivotPitch: {fileID: 540914189003704089}
   cameraTransform: {fileID: 2573847130985172789}
+  isEnabledMove: 1
   pivotOffset: {x: 0, y: 0.32, z: 0}
   defaultDistance: 4
   minDistance: 1.5

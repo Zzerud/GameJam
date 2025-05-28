@@ -8,6 +8,7 @@ public class AttackOne : MonoBehaviour
 {
     [SerializeField] private PlayableDirector director;
     [SerializeField] private PlayableAsset asset;
+    [SerializeField] private AudioClip music;
     
     [Space]
     [SerializeField] private FriendNPCBehaviour[] friends;
@@ -40,10 +41,12 @@ public class AttackOne : MonoBehaviour
         ThirdPersonController.instance.StateCharacter(false);
         CanvasController.instance.blackScreen.DOFade(1, 2);
         StartCoroutine(StartCutScene());
+
     }
     private IEnumerator StartCutScene()
     {
         yield return new WaitForSeconds(2);
+        MusicManager.instance.ChangeMusic(7, 1, 5, music);
         volume.profile = profile2;
         director.playableAsset = asset;
         director.Play();

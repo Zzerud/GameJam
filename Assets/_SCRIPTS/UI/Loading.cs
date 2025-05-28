@@ -27,7 +27,7 @@ public class Loading : MonoBehaviour
     }
     private IEnumerator loader(string sceneToLoad)
     {
-        loadingSprite.DOAnchorPosY(0, .8f).SetEase(Ease.OutBounce);
+        loadingSprite.DOAnchorPosY(0, .8f).SetEase(Ease.OutCubic);
 
         yield return new WaitForSeconds(1);
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToLoad);
