@@ -142,4 +142,10 @@ public class ThirdPersonController : MonoBehaviour
         RaycastHit hit;
         isGrounded = Physics.SphereCast(transform.position, 0.3f, Vector3.down, out hit, cc.height / 2 + 0.1f, LayerMask.GetMask("Default"));
     }
+
+    public void StateCharacter(bool active)
+    {
+        isEnabledMove = active;
+        cc.enabled = active;
+    }
 }

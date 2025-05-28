@@ -733,7 +733,118 @@ MonoBehaviour:
   - Assets/VillagePack/Well/Well.fbx
   - Assets/VillagePack/Fence/Fence.fbx
   - Assets/VillagePack/OldHouse/OldHouse.fbx
-  uvOverlapAssetList: 00000000ffffffff000000000000000000000000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000
+  - Assets/_MODELS/Boat/Boart.fbx
+  - Assets/_MODELS/Boat/Source/Boart.fbx
+  - Assets/Zibra Assets/Bonfire/Meshes/Bonfire.fbx
+  - Assets/TETRONUM_ASSETS/Medieval City Pack/Medieval Marketplace Pack/Medieval
+    Cart/MedievalCart.obj
+  - Assets/Medieval Pack/Objects/barrel_gpr.fbx
+  - Assets/Medieval Pack/Objects/Pirs.fbx
+  - Assets/Medieval Pack/Objects/Fence_Part.fbx
+  - Assets/Medieval Pack/Objects/boat.fbx
+  - Assets/Medieval Pack/Objects/Bridge.fbx
+  - Assets/Medieval Pack/Objects/Bench1.fbx
+  - Assets/Medieval Pack/Objects/stairs.fbx
+  - Assets/Medieval Pack/Objects/Deck.fbx
+  - Assets/Medieval Pack/Objects/Fence_End.fbx
+  - Assets/Medieval Pack/Objects/WaterMill.fbx
+  - Assets/Medieval Pack/Objects/Box.fbx
+  - Assets/Medieval Pack/Objects/hourse_house.obj
+  - Assets/Medieval Pack/Objects/Stump_and_Axe.fbx
+  - Assets/Medieval Pack/Objects/plant1.fbx
+  - Assets/Medieval Pack/Objects/Street_Lamp.fbx
+  - Assets/Medieval Pack/Objects/Decks.fbx
+  - Assets/Medieval Pack/Objects/Drinker.fbx
+  - Assets/Medieval Pack/Objects/Bucket.fbx
+  - Assets/Medieval Pack/Objects/barrel.fbx
+  - Assets/Medieval Pack/Objects/SmokePath.fbx
+  - Assets/Medieval Pack/Objects/Cart.fbx
+  - Assets/Medieval Pack/Objects/House1_grp.fbx
+  - Assets/Medieval Pack/Objects/BigBag.fbx
+  - Assets/_MODELS/Medieval Pack/Objects/hourse_house.obj
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Tree05.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Rock/Rock6.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Grass1_3.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Anise2.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Tree01_2.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Tree07_2.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/WaterPlant2.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Conifer3.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Flower1.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Conifer6.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Rock/Rock4.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Bush3.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Moss3.FBX
+  - "Assets/_MODELS/Excalibur/\u042D\u043A\u0441\u043A\u0430\u043B\u0438\u0431\u0443\u0440
+    (3).fbx"
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Flower5.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Tree02.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Tree06.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Conifer4.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Rock/Rock2.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Tree03_2.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Grass2_1.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Bush1.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Chamomile3.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Rock/Rock7.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Chamomile1.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Moss2.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Tree03.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Dandelion1.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Tree01.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Nettle1.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Tree02_2.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Poaceae1.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Grass1_2.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Flower3.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Wheat.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/PineTree2.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Tree04.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Poaceae4.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Rock/Rock8.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Fireweed2.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Conifer1.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Grass2_2.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Tree07.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Conifer5.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Rock/Rock3.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Bush5.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Chamomile2.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Poaceae5.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Dandelion2.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Bush4.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Nettle2.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Tree06_2.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Flower2.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/PineTree3.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Tree08_2.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Rock/Rock5.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Conifer8.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Tree05_2.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Rock/Rock1.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Grass2_3.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Poaceae2.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Conifer7.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Grass1_5.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Anise1.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Moss1.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Grass1_1.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Grass2_5.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Tree08.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Rock/Rock9.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Grass1_4.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Conifer2.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Fireweed1.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/WaterPlant3.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Poaceae3.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Flower4.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Grass2_4.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Bush2.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/PineTree1.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/WaterPlant1.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/WaterPlant4.FBX
+  - Assets/_MODELS/Flora_Rock/Meshes/Flora/Tree04_2.FBX
+  uvOverlapAssetList: 00000000ffffffff00000000000000000000000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000000000000000000000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000000000000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000010100000101000001010000000000000101000001010000010100000101000001010000000000000000000001010000
   xatlasWarningShown: 1
   foundCompatibleSetup: 1
   gpuName: NVIDIA GeForce RTX 2060 SUPER

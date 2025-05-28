@@ -13,10 +13,8 @@ public class EnemyNPCBehaviour : MonoBehaviour
     [SerializeField] private float loseTargetTime = 3f;
     [SerializeField] private float waitTimeAtPoint = 2f;
     [SerializeField] private float detectionMin = 10f;
-
-    [Space]
-    [SerializeField] private Volume volume;
-    private Vignette vg;
+    [SerializeField] private bool isStanding = false;
+    [SerializeField] private Vector3 rotationPerson;
 
     private NavMeshAgent agent;
     private int currentPatrolIndex;
@@ -25,21 +23,14 @@ public class EnemyNPCBehaviour : MonoBehaviour
     public float loseTimer = 0;
     private float waitTimer = 0f;
 
-    private enum State { Patrolling, Waiting, Detecting }
-    private State currentState = State.Patrolling;
+    public enum State { Patrolling, Waiting, Detecting }
+    public State currentState = State.Patrolling;
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         player = ThirdPersonController.instance.transform;
         GoToNextPoint();
-
-        if (volume.profile.TryGet(out vg))
-        {
-            vg.color.value = Color.red;
-            vg.intensity.value = 0;
-            vg.smoothness.value = 0.666f;
-        }
     }
     private void Update()
     {
@@ -61,7 +52,7 @@ public class EnemyNPCBehaviour : MonoBehaviour
         }
 
         CheckForPlayer();
-        vg.intensity.value = detectionMeter / 100;
+        RedVignetteManager.instance.RegisterIntensity(detectionMeter / 100f);
     }
 
     private void GoToNextPoint()
@@ -72,12 +63,13 @@ public class EnemyNPCBehaviour : MonoBehaviour
     private void WaitLogic()
     {
         waitTimer += Time.deltaTime;
-        if (waitTimer >= waitTimeAtPoint)
+        if (waitTimer >= waitTimeAtPoint && !isStanding)
         {
             GoToNextPoint();
             currentState = State.Patrolling;
             agent.isStopped = false;
         }
+        if (isStanding) transform.rotation = Quaternion.Euler(rotationPerson);
     }
 
     private void PatrolLogic()

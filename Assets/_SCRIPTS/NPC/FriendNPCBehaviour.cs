@@ -9,9 +9,14 @@ public class FriendNPCBehaviour : MonoBehaviour
     [SerializeField] private TMP_Text text;
     [SerializeField] private float typeSpeed = 0.05f;
 
+    [Header("Attack Pos1")]
+    [SerializeField] private Transform teleportation1;
+    [SerializeField] private Vector3 rotation1;
+
     private bool interaction = false;
     public bool isTalked = false;
     private Quaternion defaultRotation;
+    private bool beforeAttack = true;
 
     private void Start()
     {
@@ -20,8 +25,11 @@ public class FriendNPCBehaviour : MonoBehaviour
     }
     private void Update()
     {
-        if (interaction) WatchWhileTalk();
-        else ReturnToDefault();
+        if (beforeAttack)
+        {
+            if (interaction) WatchWhileTalk();
+            else ReturnToDefault();
+        }
     }
     public void StartTalk()
     {
@@ -56,5 +64,12 @@ public class FriendNPCBehaviour : MonoBehaviour
         {
             transform.rotation = defaultRotation;
         }
+    }
+
+    public void SetPositions()
+    {
+        transform.position = teleportation1.position;
+        transform.rotation = Quaternion.Euler(rotation1);
+        beforeAttack = false;
     }
 }

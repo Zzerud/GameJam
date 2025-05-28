@@ -1,10 +1,12 @@
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CanvasController : MonoBehaviour
 {
     public static CanvasController instance {  get; private set; }
+    public Image blackScreen;
 
     [Header("Interaction with NPC")]
     [SerializeField] private TMP_Text interactText;
