@@ -10,6 +10,7 @@ public class ThirdPersonController : MonoBehaviour
     [SerializeField] private Transform cameraPivotPitch;
     [SerializeField] private Transform cameraTransform;
     private CharacterController cc;
+    public bool isEnabledMove = true;
 
     [Header("Camera Offset")]
     public Vector3 pivotOffset = new Vector3(0f, 1.8f, 0f);
@@ -52,13 +53,19 @@ public class ThirdPersonController : MonoBehaviour
 
     private void Update()
     {
-        HandleMovement();
-        GroundCheck();
+        if (isEnabledMove)
+        {
+            HandleMovement();
+            GroundCheck();
+        }
     }
     private void LateUpdate()
     {
-        HandleMouse();
-        HandleCameraCollision();
+        if (isEnabledMove)
+        {
+            HandleMouse();
+            HandleCameraCollision();
+        }
     }
     private void HandleMouse()
     {

@@ -10,7 +10,13 @@ public class CanvasController : MonoBehaviour
     [SerializeField] private TMP_Text interactText;
     [SerializeField] private float interactDur = 0.6f;
     private bool isEnabledTointeract = false;
+
+    [Header("Scripts")]
+    [SerializeField] private AttackOne attackOne;
     [HideInInspector] public FriendNPCBehaviour currentNPC;
+
+    public enum InteractStates { Talks, Game }
+    public InteractStates interactsState = InteractStates.Game;
 
     private void Start()
     {
@@ -25,7 +31,15 @@ public class CanvasController : MonoBehaviour
         if (isEnabledTointeract && Input.GetKeyDown(KeyCode.E))
         {
             InteractState(false);
-            currentNPC.StartTalk();
+            switch (interactsState)
+            {
+                case InteractStates.Talks:
+                    currentNPC.StartTalk();
+                    break;
+                case InteractStates.Game:
+                    attackOne.StartAttack();
+                    break;
+            }
         }
     }
 
