@@ -7,10 +7,12 @@ public class TriggerEnemyLogs : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == enemy.gameObject)
+        if (other.gameObject.CompareTag("NPC"))
         {
             enemy.patrolPoints[0] = newPoint;
             enemy.isStanding = false;
+            enemy.currentState = EnemyNPCBehaviour.State.Patrolling;
+            enemy.GoToNextPoint();
             Debug.Log("Enemy is entered Trigger");
             TaskManager.instance.tasks[2].CompleteTask();
         }

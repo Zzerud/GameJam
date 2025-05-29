@@ -413,13 +413,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6f47bbf346e7414c85e4f503389d962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   fullText: 
   text: {fileID: 3124098612373487837}
   typeSpeed: 0.05
+  task: {fileID: 0}
   teleportation1: {fileID: 0}
   rotation1: {x: 0, y: 0, z: 0}
   isTalked: 0
+  beforeAttack: 1
 --- !u!54 &1892845502747208634
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -539,7 +540,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
+  m_fontSize: 17
   m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0

@@ -16,6 +16,7 @@ public class EnemyNPCBehaviour : MonoBehaviour
     [SerializeField] private float detectionMin = 10f;
     public bool isStanding = false;
     [SerializeField] private Vector3 rotationPerson;
+    [SerializeField] private Animator animator;
 
     private NavMeshAgent agent;
     private int currentPatrolIndex;
@@ -59,9 +60,11 @@ public class EnemyNPCBehaviour : MonoBehaviour
 
         CheckForPlayer();
         RedVignetteManager.instance.RegisterIntensity(detectionMeter / 100f);
+
+        animator.SetBool("Walk", agent.velocity.magnitude > 0.1f && !agent.isStopped);
     }
 
-    private void GoToNextPoint()
+    public void GoToNextPoint()
     {
         currentPatrolIndex = Random.Range(0, patrolPoints.Length);
         agent.SetDestination(patrolPoints[currentPatrolIndex].position);
