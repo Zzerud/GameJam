@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 7413847620501506946}
   - component: {fileID: 7114073135990475919}
   - component: {fileID: 5010261867294541819}
-  m_Layer: 0
+  - component: {fileID: 5696066165590863481}
+  m_Layer: 2
   m_Name: Bonfire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,6 +149,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireVfx: {fileID: 3055475048461245611}
   isAttacked: 0
+--- !u!208 &5696066165590863481
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6130527833914025748}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.34, y: 0.054, z: 0.36}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.001, y: 0.039, z: 0.002}
+  m_TimeToStationary: 0.5
 --- !u!1001 &5832083700597544565
 PrefabInstance:
   m_ObjectHideFlags: 0

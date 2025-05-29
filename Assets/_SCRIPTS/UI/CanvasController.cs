@@ -10,6 +10,7 @@ public class CanvasController : MonoBehaviour
 
     [Header("Interaction with NPC")]
     [SerializeField] private TMP_Text interactText;
+    public TMP_Text interactQText;
     [SerializeField] private float interactDur = 0.6f;
     private bool isEnabledTointeract = false;
 
@@ -17,8 +18,9 @@ public class CanvasController : MonoBehaviour
     [SerializeField] private AttackOne attackOne;
     [HideInInspector] public FriendNPCBehaviour currentNPC;
     [HideInInspector] public LightFires currentCamp;
+    [HideInInspector] public Barrel barrel;
 
-    public enum InteractStates { Talks, Game, Camp }
+    public enum InteractStates { Talks, Game, Camp, Barrel }
     public InteractStates interactsState = InteractStates.Game;
 
     private void Start()
@@ -44,6 +46,9 @@ public class CanvasController : MonoBehaviour
                     break;
                 case InteractStates.Camp:
                     currentCamp.Activated();
+                    break;
+                case InteractStates.Barrel:
+                    barrel.BarrelAnim();
                     break;
             }
         }

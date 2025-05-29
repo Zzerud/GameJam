@@ -31,5 +31,8 @@ public class LightFires : MonoBehaviour
         CanvasController.instance.InteractState(false);
         CanvasController.instance.currentCamp = null;
         WindyController.instance.FillWind(5);
+
+        AttackOne.campsOpen++;
+        if (AttackOne.campsOpen == 3) TaskManager.instance.tasks[0].CompleteTask();
     }
 }

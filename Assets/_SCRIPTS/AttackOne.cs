@@ -17,11 +17,13 @@ public class AttackOne : MonoBehaviour
     [SerializeField] private Volume volume;
     [SerializeField] private VolumeProfile profile2;
     [SerializeField] private LightFires[] camp;
+    [SerializeField] private GameObject barrel, triggerEnemy;
 
     private bool isStarted = false;
+    public static int campsOpen = 0;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && !isStarted)
+        if (other.gameObject.CompareTag("Player") && !isStarted && TaskManager.instance.isCompletedTasks1)
         {
             CanvasController.instance.interactsState = CanvasController.InteractStates.Game;
             CanvasController.instance.InteractState(true);
@@ -46,6 +48,7 @@ public class AttackOne : MonoBehaviour
     }
     private IEnumerator StartCutScene()
     {
+        TaskManager.instance.tasks[0].CompleteTask();
         yield return new WaitForSeconds(2);
         MusicManager.instance.ChangeMusic(7, 1, 5, music);
         volume.profile = profile2;
@@ -72,5 +75,10 @@ public class AttackOne : MonoBehaviour
         }
         boats.SetActive(true);
         enemys.SetActive(true);
+        barrel.SetActive(true);
+        triggerEnemy.SetActive(true);
+
+        CanvasController.instance.interactQText.DOFade(1, 0.5f);
+        TaskManager.instance.CheckTasks("Зажгите 3 костра", "Опрокиньте бочку", "Приманите врага к лесорубу");
     }
 }
