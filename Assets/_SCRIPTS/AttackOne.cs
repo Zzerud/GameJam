@@ -16,6 +16,7 @@ public class AttackOne : MonoBehaviour
     [SerializeField] private GameObject boats, enemys;
     [SerializeField] private Volume volume;
     [SerializeField] private VolumeProfile profile2;
+    [SerializeField] private LightFires[] camp;
 
     private bool isStarted = false;
     private void OnTriggerEnter(Collider other)
@@ -64,6 +65,10 @@ public class AttackOne : MonoBehaviour
         foreach (FriendNPCBehaviour f in friends)
         {
             f.SetPositions();
+        }
+        foreach (LightFires f in camp)
+        {
+            f.isAttacked = true;
         }
         boats.SetActive(true);
         enemys.SetActive(true);

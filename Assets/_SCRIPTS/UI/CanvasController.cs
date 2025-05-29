@@ -16,8 +16,9 @@ public class CanvasController : MonoBehaviour
     [Header("Scripts")]
     [SerializeField] private AttackOne attackOne;
     [HideInInspector] public FriendNPCBehaviour currentNPC;
+    [HideInInspector] public LightFires currentCamp;
 
-    public enum InteractStates { Talks, Game }
+    public enum InteractStates { Talks, Game, Camp }
     public InteractStates interactsState = InteractStates.Game;
 
     private void Start()
@@ -40,6 +41,9 @@ public class CanvasController : MonoBehaviour
                     break;
                 case InteractStates.Game:
                     attackOne.StartAttack();
+                    break;
+                case InteractStates.Camp:
+                    currentCamp.Activated();
                     break;
             }
         }
