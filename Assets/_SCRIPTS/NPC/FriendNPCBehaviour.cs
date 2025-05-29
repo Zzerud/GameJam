@@ -16,7 +16,7 @@ public class FriendNPCBehaviour : MonoBehaviour
     private bool interaction = false;
     public bool isTalked = false;
     private Quaternion defaultRotation;
-    private bool beforeAttack = true;
+    public bool beforeAttack = true;
 
     private void Start()
     {

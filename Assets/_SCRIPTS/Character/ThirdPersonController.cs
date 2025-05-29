@@ -9,8 +9,11 @@ public class ThirdPersonController : MonoBehaviour
     [SerializeField] private Transform cameraPivot;
     [SerializeField] private Transform cameraPivotPitch;
     [SerializeField] private Transform cameraTransform;
+    public Animator animator;
     private CharacterController cc;
     public bool isEnabledMove = true;
+    public bool isEnabledRun = true;
+    public bool isEnabledJump = true;
 
     [Header("Camera Offset")]
     public Vector3 pivotOffset = new Vector3(0f, 1.8f, 0f);
@@ -111,24 +114,41 @@ public class ThirdPersonController : MonoBehaviour
         float v = Input.GetAxisRaw("Vertical");
         Vector3 inputDir = new Vector3(h, 0f, v).normalized;
 
-        if (inputDir.magnitude >= 0.1f)
+        bool isMove = h != 0 || v != 0;
+
+        if (isMove)
         {
-            Vector3 moveDir = cameraPivot.forward * v + cameraPivot.right * h;
-            moveDir.y = 0f;
-            moveDir.Normalize();
+            if (inputDir.magnitude >= 0.1f)
+            {
+                Vector3 moveDir = cameraPivot.forward * v + cameraPivot.right * h;
+                moveDir.y = 0f;
+                moveDir.Normalize();
+                bool isRunning = Input.GetKey(KeyCode.LeftShift) && isEnabledRun;
 
-            float targetAngle = Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+                animator.SetBool("Walking", true);
+                animator.SetBool("Running", isRunning);
 
-            float speed = Input.GetKey(KeyCode.LeftShift) ? runSpeed : walkSpeed;
-            cc.Move(moveDir * speed * Time.deltaTime);
+                float targetAngle = Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg;
+                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+                transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+                float speed = isRunning ? runSpeed : walkSpeed;
+                cc.Move(moveDir * speed * Time.deltaTime);
+            }
+        }
+        else
+        {
+            animator.SetBool("Running", false);
+            animator.SetBool("Walking", false);
         }
 
-        if (isGrounded)
+        if (isGrounded && isEnabledJump)
         {
             if (Input.GetKeyDown(KeyCode.Space))
+            {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+                animator.SetTrigger("Jump");
+            }
             if (velocity.y < 0)
                 velocity.y = -2f;
 
@@ -140,12 +160,14 @@ public class ThirdPersonController : MonoBehaviour
     private void GroundCheck()
     {
         RaycastHit hit;
-        isGrounded = Physics.SphereCast(transform.position, 0.3f, Vector3.down, out hit, cc.height / 2 + 0.1f, LayerMask.GetMask("Default"));
+        isGrounded = Physics.SphereCast(transform.position, 0.1f, Vector3.down, out hit, .2f, LayerMask.GetMask("Ground"));
     }
 
     public void StateCharacter(bool active)
     {
         isEnabledMove = active;
         cc.enabled = active;
+        animator.SetBool("Running", active);
+        animator.SetBool("Walking", active);
     }
 }

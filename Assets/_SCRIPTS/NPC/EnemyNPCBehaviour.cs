@@ -69,7 +69,11 @@ public class EnemyNPCBehaviour : MonoBehaviour
             currentState = State.Patrolling;
             agent.isStopped = false;
         }
-        if (isStanding) transform.rotation = Quaternion.Euler(rotationPerson);
+        if (isStanding)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation,
+                Quaternion.Euler(rotationPerson), Time.deltaTime * 5f);
+        }
     }
 
     private void PatrolLogic()
@@ -93,10 +97,18 @@ public class EnemyNPCBehaviour : MonoBehaviour
 
     private void CheckForPlayer()
     {
-        Vector3 dirToPlayer = player.position - transform.position;
-        float distToPlayer = dirToPlayer.magnitude;
+        Vector3 dirToPlayer = (player.position - transform.position).normalized;
+        float distToPlayer = Vector3.Distance(transform.position, player.position);
+        float angleToPlayer = Vector3.Angle(transform.forward, dirToPlayer);
 
-        if (distToPlayer <= viewDistance && !Physics.Linecast(transform.position, player.position, obstacleMask))
+        float adjustedViewDistance = viewDistance;
+
+        if (angleToPlayer > 135f) 
+            adjustedViewDistance *= 0.66f;
+        else if (angleToPlayer > 45f)
+            adjustedViewDistance *= 0.85f;
+
+        if (distToPlayer <= adjustedViewDistance && !Physics.Linecast(transform.position, player.position, obstacleMask))
         {
             currentState = State.Detecting;
             agent.isStopped = true;

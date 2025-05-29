@@ -6,7 +6,7 @@ public class TriggerToTalk : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && !manager.isTalked)
+        if (other.gameObject.CompareTag("Player") && !manager.isTalked && manager.beforeAttack)
         {
             CanvasController.instance.InteractState(true);
             CanvasController.instance.currentNPC = manager;

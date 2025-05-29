@@ -54,8 +54,12 @@ public class AttackOne : MonoBehaviour
     public void EndCutscene()
     {
         ThirdPersonController.instance.transform.position = startToGame.position;
-        ThirdPersonController.instance.transform.rotation = Quaternion.Euler(0, -180, 0);
+        ThirdPersonController.instance.transform.rotation = Quaternion.Euler(0, -75, 0);
         ThirdPersonController.instance.StateCharacter(true);
+        ThirdPersonController.instance.animator.SetBool("Crouch", true);
+        ThirdPersonController.instance.isEnabledRun = false;
+        ThirdPersonController.instance.isEnabledJump = false;
+        ThirdPersonController.instance.pivotOffset.y = 0.65f;
         CanvasController.instance.blackScreen.DOFade(0, 1);
         foreach (FriendNPCBehaviour f in friends)
         {
