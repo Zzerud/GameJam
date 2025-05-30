@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class FriendNPCBehaviour : MonoBehaviour
 {
-    [SerializeField] private Transform player;
     [SerializeField] private string fullText;
     [SerializeField] private TMP_Text text;
     [SerializeField] private float typeSpeed = 0.05f;
+    [SerializeField] private Task task;
 
     [Header("Attack Pos1")]
     [SerializeField] private Transform teleportation1;
     [SerializeField] private Vector3 rotation1;
 
+    private Transform player;
     private bool interaction = false;
     public bool isTalked = false;
     private Quaternion defaultRotation;
@@ -48,7 +49,8 @@ public class FriendNPCBehaviour : MonoBehaviour
         yield return new WaitForSeconds(2);
         text.text = "";
         interaction = false;
-        
+        task.CompleteTask();
+        TaskManager.instance.CheckTasks("Потренируйтесь у реки");
     }
     private void WatchWhileTalk()
     {

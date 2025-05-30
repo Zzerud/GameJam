@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 [RequireComponent(typeof(CharacterController))]
 public class ThirdPersonController : MonoBehaviour
@@ -9,6 +11,8 @@ public class ThirdPersonController : MonoBehaviour
     [SerializeField] private Transform cameraPivot;
     [SerializeField] private Transform cameraPivotPitch;
     [SerializeField] private Transform cameraTransform;
+    [SerializeField] private AudioSource sounds;
+    [SerializeField] private AudioClip whistleSound;
     public Animator animator;
     private CharacterController cc;
     public bool isEnabledMove = true;
@@ -37,6 +41,10 @@ public class ThirdPersonController : MonoBehaviour
     [Header("Camera Settings")]
     [SerializeField] private float mouseSensitivity = 2;
     [SerializeField] private float minPitch = -30f, maxPitch = 60f;
+    [SerializeField] private LayerMask ignoreCameraCollision;
+
+    [Header("Whistle")]
+    public List<EnemyNPCBehaviour> enemies = new List<EnemyNPCBehaviour>();
     private float pitch = 0;
 
 
@@ -60,6 +68,8 @@ public class ThirdPersonController : MonoBehaviour
         {
             HandleMovement();
             GroundCheck();
+            if (Input.GetKeyDown(KeyCode.Q))
+                WhistleAt();
         }
     }
     private void LateUpdate()
@@ -72,11 +82,13 @@ public class ThirdPersonController : MonoBehaviour
     }
     private void HandleMouse()
     {
+        if (Time.timeScale == 0) return;
+
         Vector3 targetPos = transform.position + pivotOffset;
         cameraPivot.position = Vector3.Lerp(cameraPivot.position, targetPos, Time.deltaTime * collisionSmoothSpeed);
 
-        float mouseX = Input.GetAxisRaw("Mouse X") * mouseSensitivity;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * mouseSensitivity;
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
         cameraPivot.Rotate(Vector3.up * mouseX, Space.World);
 
@@ -92,7 +104,7 @@ public class ThirdPersonController : MonoBehaviour
         float maxCheckDist = defaultDistance;
 
         RaycastHit hit;
-        if (Physics.SphereCast(pivotPos, 0.2f, dir, out hit, maxCheckDist))
+        if (Physics.SphereCast(pivotPos, 0.2f, dir, out hit, maxCheckDist, ignoreCameraCollision))
         {
             float hitDist = hit.distance;
             currentDistance = Mathf.Lerp(currentDistance, Mathf.Clamp(hitDist, minDistance, maxDistance), Time.deltaTime * collisionSmoothSpeed);
@@ -102,7 +114,6 @@ public class ThirdPersonController : MonoBehaviour
             currentDistance = Mathf.Lerp(currentDistance, defaultDistance, Time.deltaTime * collisionSmoothSpeed);
         }
 
-        // установка позиции камеры
         Vector3 finalPos = cameraPivotPitch.TransformPoint(new Vector3(0f, 0f, -currentDistance));
         cameraTransform.position = finalPos;
         cameraTransform.LookAt(cameraPivot.position + Vector3.up * (pivotOffset.y * 0.9f));
@@ -156,11 +167,31 @@ public class ThirdPersonController : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         cc.Move(velocity * Time.deltaTime);
     }
-
     private void GroundCheck()
     {
         RaycastHit hit;
         isGrounded = Physics.SphereCast(transform.position, 0.1f, Vector3.down, out hit, .2f, LayerMask.GetMask("Ground"));
+    }
+
+    public void WhistleAt()
+    {
+        CanvasController.instance.interactQText.DOFade(0, 0.2f);
+        EnemyNPCBehaviour closestEnemy = null;
+        float closestDistance = Mathf.Infinity;
+        sounds.PlayOneShot(whistleSound);
+
+        foreach (var enemy in enemies)
+        {
+            float dist = Vector3.Distance(transform.position, enemy.transform.position);
+            if (dist < closestDistance)
+            {
+                closestDistance = dist;
+                closestEnemy = enemy;
+            }
+        }
+        Debug.Log(closestEnemy);
+        if (closestEnemy != null)
+            closestEnemy.Investigate(transform.position);
     }
 
     public void StateCharacter(bool active)

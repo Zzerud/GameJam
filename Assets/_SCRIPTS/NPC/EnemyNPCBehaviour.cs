@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering;
@@ -5,7 +6,7 @@ using UnityEngine.Rendering.Universal;
 
 public class EnemyNPCBehaviour : MonoBehaviour
 {
-    [SerializeField] private Transform[] patrolPoints;
+    public Transform[] patrolPoints;
     [SerializeField] private float viewDistance = 10;
     [SerializeField] private float detectionRate = 1;
     [SerializeField] private LayerMask obstacleMask;
@@ -13,8 +14,9 @@ public class EnemyNPCBehaviour : MonoBehaviour
     [SerializeField] private float loseTargetTime = 3f;
     [SerializeField] private float waitTimeAtPoint = 2f;
     [SerializeField] private float detectionMin = 10f;
-    [SerializeField] private bool isStanding = false;
+    public bool isStanding = false;
     [SerializeField] private Vector3 rotationPerson;
+    [SerializeField] private Animator animator;
 
     private NavMeshAgent agent;
     private int currentPatrolIndex;
@@ -22,8 +24,10 @@ public class EnemyNPCBehaviour : MonoBehaviour
     public float maxDetection = 100;
     public float loseTimer = 0;
     private float waitTimer = 0f;
+    private Vector3 investigationPosition;
+    private bool reachedWhistlePoint = false;
 
-    public enum State { Patrolling, Waiting, Detecting }
+    public enum State { Patrolling, Waiting, Detecting, Investigating }
     public State currentState = State.Patrolling;
 
     private void Start()
@@ -49,13 +53,18 @@ public class EnemyNPCBehaviour : MonoBehaviour
             case State.Detecting:
                 DetectingLogic();
                 break;
+            case State.Investigating:
+                InvestigateLogic();
+                break;
         }
 
         CheckForPlayer();
         RedVignetteManager.instance.RegisterIntensity(detectionMeter / 100f);
+
+        animator.SetBool("Walk", agent.velocity.magnitude > 0.1f && !agent.isStopped);
     }
 
-    private void GoToNextPoint()
+    public void GoToNextPoint()
     {
         currentPatrolIndex = Random.Range(0, patrolPoints.Length);
         agent.SetDestination(patrolPoints[currentPatrolIndex].position);
@@ -142,4 +151,42 @@ public class EnemyNPCBehaviour : MonoBehaviour
             detectionMeter = Mathf.Clamp(detectionMeter + rate * Time.deltaTime * 100f, 0, maxDetection);
         }
     }
+
+    void InvestigateLogic()
+    {
+        if (!reachedWhistlePoint && !agent.pathPending && agent.remainingDistance < 0.5f)
+        {
+            reachedWhistlePoint = true;
+            StartCoroutine(WaitAndReturn());
+        }
+    }
+
+    public void Investigate(Vector3 position)
+    {
+        investigationPosition = position;
+        agent.SetDestination(investigationPosition);
+        currentState = State.Investigating;
+        agent.isStopped = false;
+        reachedWhistlePoint = false;
+    }
+    private IEnumerator WaitAndReturn()
+    {
+        yield return new WaitForSeconds(2f);
+
+        Vector3 dirToPlayer = player.position - transform.position;
+        float distToPlayer = dirToPlayer.magnitude;
+
+        if (distToPlayer <= viewDistance && !Physics.Linecast(transform.position, player.position, obstacleMask))
+        {
+            currentState = State.Detecting;
+            agent.isStopped = true;
+        }
+        else
+        {
+            currentState = State.Patrolling;
+            GoToNextPoint();
+        }
+    }
+
+
 }
