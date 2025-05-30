@@ -1688,7 +1688,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -72, y: 0}
   m_SizeDelta: {x: 552.763, y: 92.7592}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1303589280
@@ -2364,8 +2364,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 1845}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 2197}
+  m_SizeDelta: {x: 90.8086, y: 1131.626}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1918233667
 MonoBehaviour:
@@ -2647,20 +2647,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee9022baa27212742918e78cb7c68778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  game: {fileID: 0}
   innerRing: {fileID: 2112194637}
   middleRing: {fileID: 930659804}
   outerRing: {fileID: 1920317007}
   neededTone: {fileID: 1230424461}
+  neededDir: {fileID: 0}
+  neededVol: {fileID: 0}
   targetToneAngle: 149
   targetDirectionAngle: 0
   targetVolumeAngle: 0
   angleTolerance: 10
-  onPuzzleComplete:
-    m_PersistentCalls:
-      m_Calls: []
-  onNearMatch:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &2007757969796092623
 PrefabInstance:
   m_ObjectHideFlags: 0
