@@ -8,17 +8,17 @@ public class TriggerToTalk : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && !manager.isTalked && manager.beforeAttack)
         {
-            CanvasController.instance.InteractState(true);
-            CanvasController.instance.currentNPC = manager;
-            CanvasController.instance.interactsState = CanvasController.InteractStates.Talks;
+            CanvasControllerChapter1.instance.InteractState(true);
+            CanvasControllerChapter1.instance.currentNPC = manager;
+            CanvasControllerChapter1.instance.interactsState = CanvasControllerChapter1.InteractStates.Talks;
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            CanvasController.instance.InteractState(false);
-            CanvasController.instance.currentNPC = null;
+            CanvasControllerChapter1.instance.InteractState(false);
+            CanvasControllerChapter1.instance.currentNPC = null;
         }
     }
 }

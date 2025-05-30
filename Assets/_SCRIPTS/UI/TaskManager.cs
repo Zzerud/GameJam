@@ -17,11 +17,18 @@ public class TaskManager : MonoBehaviour
     }
     public void CheckTasks(string task1 = "", string task2 = "", string task3 = "", string task4 = "", string task5 = "")
     {
+
         string[] taskTexts = { task1, task2, task3, task4, task5 };
 
         for (int i = 0; i < tasks.Length; i++)
         {
             if (!tasks[i].toggle.isOn && tasks[i].gameObject.activeSelf) return;
+        }
+
+        foreach (Task task in tasks)
+        {
+            task.gameObject.SetActive(false);
+            task.currentText = "";
         }
 
         isCompletedTasks1 = true;
