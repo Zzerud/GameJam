@@ -10,17 +10,17 @@ public class Barrel : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && isEnabled)
         {
-            CanvasController.instance.InteractState(true);
-            CanvasController.instance.barrel = this;
-            CanvasController.instance.interactsState = CanvasController.InteractStates.Barrel;
+            CanvasControllerChapter1.instance.InteractState(true);
+            CanvasControllerChapter1.instance.barrel = this;
+            CanvasControllerChapter1.instance.interactsState = CanvasControllerChapter1.InteractStates.Barrel;
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            CanvasController.instance.InteractState(false);
-            CanvasController.instance.barrel = null;
+            CanvasControllerChapter1.instance.InteractState(false);
+            CanvasControllerChapter1.instance.barrel = null;
         }
     }
 

@@ -10,17 +10,17 @@ public class LightFires : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && !activated && isAttacked)
         {
-            CanvasController.instance.InteractState(true);
-            CanvasController.instance.currentCamp = this;
-            CanvasController.instance.interactsState = CanvasController.InteractStates.Camp;
+            CanvasControllerChapter1.instance.InteractState(true);
+            CanvasControllerChapter1.instance.currentCamp = this;
+            CanvasControllerChapter1.instance.interactsState = CanvasControllerChapter1.InteractStates.Camp;
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            CanvasController.instance.InteractState(false);
-            CanvasController.instance.currentCamp = null;
+            CanvasControllerChapter1.instance.InteractState(false);
+            CanvasControllerChapter1.instance.currentCamp = null;
         }
     }
 
@@ -28,9 +28,9 @@ public class LightFires : MonoBehaviour
     {
         activated = true;
         fireVfx.SetActive(true);
-        CanvasController.instance.InteractState(false);
-        CanvasController.instance.currentCamp = null;
-        WindyController.instance.FillWind(5);
+        CanvasControllerChapter1.instance.InteractState(false);
+        CanvasControllerChapter1.instance.currentCamp = null;
+        WindyController.instance.FillWind(10);
 
         AttackOne.campsOpen++;
         if (AttackOne.campsOpen == 3) TaskManager.instance.tasks[0].CompleteTask();

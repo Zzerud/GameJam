@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System.Collections;
 
 [RequireComponent(typeof(CharacterController))]
 public class ThirdPersonController : MonoBehaviour
@@ -33,7 +34,7 @@ public class ThirdPersonController : MonoBehaviour
     [Range(.1f, 5.0f)][SerializeField] private float walkSpeed = 4f;
     [Range(2.1f, 9.0f)][SerializeField] private float runSpeed = 6f;
 
-    [Range(.1f, 2.0f)] [SerializeField] private float jumpHeight = 1.2f;
+    [Range(.1f, 2.0f)][SerializeField] private float jumpHeight = 1.2f;
     [SerializeField] private float gravity = -9.81f;
     [SerializeField] private float turnSmoothTime = 0.1f;
     [SerializeField] private float turnSmoothVelocity;
@@ -175,7 +176,11 @@ public class ThirdPersonController : MonoBehaviour
 
     public void WhistleAt()
     {
-        CanvasController.instance.interactQText.DOFade(0, 0.2f);
+        StartCoroutine(WhistleCoroutine());
+    }
+    private IEnumerator WhistleCoroutine()
+    {
+        CanvasControllerChapter1.instance.interactQText.DOFade(0, 0.2f);
         EnemyNPCBehaviour closestEnemy = null;
         float closestDistance = Mathf.Infinity;
         sounds.PlayOneShot(whistleSound);
@@ -189,7 +194,7 @@ public class ThirdPersonController : MonoBehaviour
                 closestEnemy = enemy;
             }
         }
-        Debug.Log(closestEnemy);
+        yield return new WaitForSeconds(0.9f);
         if (closestEnemy != null)
             closestEnemy.Investigate(transform.position);
     }

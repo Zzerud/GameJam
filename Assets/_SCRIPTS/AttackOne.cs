@@ -17,7 +17,7 @@ public class AttackOne : MonoBehaviour
     [SerializeField] private Volume volume;
     [SerializeField] private VolumeProfile profile2;
     [SerializeField] private LightFires[] camp;
-    [SerializeField] private GameObject barrel, triggerEnemy;
+    [SerializeField] private GameObject barrel, triggerEnemy, triggerMinigame;
 
     private bool isStarted = false;
     public static int campsOpen = 0;
@@ -25,24 +25,24 @@ public class AttackOne : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && !isStarted && TaskManager.instance.isCompletedTasks1)
         {
-            CanvasController.instance.interactsState = CanvasController.InteractStates.Game;
-            CanvasController.instance.InteractState(true);
+            CanvasControllerChapter1.instance.interactsState = CanvasControllerChapter1.InteractStates.Game;
+            CanvasControllerChapter1.instance.InteractState(true);
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            CanvasController.instance.InteractState(false);
+            CanvasControllerChapter1.instance.InteractState(false);
         }
     }
 
     public void StartAttack()
     {
         isStarted = true;
-        WindyController.instance.FillWind(10);
+        WindyController.instance.FillWind(5);
         ThirdPersonController.instance.StateCharacter(false);
-        CanvasController.instance.blackScreen.DOFade(1, 2);
+        CanvasControllerChapter1.instance.blackScreen.DOFade(1, 2);
         StartCoroutine(StartCutScene());
 
     }
@@ -64,7 +64,7 @@ public class AttackOne : MonoBehaviour
         ThirdPersonController.instance.isEnabledRun = false;
         ThirdPersonController.instance.isEnabledJump = false;
         ThirdPersonController.instance.pivotOffset.y = 0.65f;
-        CanvasController.instance.blackScreen.DOFade(0, 1);
+        CanvasControllerChapter1.instance.blackScreen.DOFade(0, 1);
         foreach (FriendNPCBehaviour f in friends)
         {
             f.SetPositions();
@@ -77,8 +77,9 @@ public class AttackOne : MonoBehaviour
         enemys.SetActive(true);
         barrel.SetActive(true);
         triggerEnemy.SetActive(true);
+        triggerMinigame.SetActive(true);
 
-        CanvasController.instance.interactQText.DOFade(1, 0.5f);
-        TaskManager.instance.CheckTasks("Зажгите 3 костра", "Опрокиньте бочку", "Приманите врага к лесорубу");
+        CanvasControllerChapter1.instance.interactQText.DOFade(1, 0.5f);
+        TaskManager.instance.CheckTasks("Зажгите 3 костра", "Опрокиньте бочку", "Приманите неприятеля к лесорубу", "Проколите лодки неприятелей", "Проведите ритуал на вышине");
     }
 }

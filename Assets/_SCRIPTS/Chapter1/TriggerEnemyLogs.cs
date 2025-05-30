@@ -10,7 +10,6 @@ public class TriggerEnemyLogs : MonoBehaviour
         if (other.gameObject.CompareTag("NPC"))
         {
             enemy.patrolPoints[0] = newPoint;
-            enemy.isStanding = false;
             enemy.currentState = EnemyNPCBehaviour.State.Patrolling;
             enemy.GoToNextPoint();
             Debug.Log("Enemy is entered Trigger");
