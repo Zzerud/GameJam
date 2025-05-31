@@ -37,4 +37,9 @@ public class SopkaTrigger : MonoBehaviour
         director.playableAsset = asset;
         director.Play();
     }
+
+    public void EndCutscene()
+    {
+        Loading.instance.StartLoading("Chapter1_3");
+    }
 }
