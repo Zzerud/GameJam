@@ -22,8 +22,9 @@ public class CanvasControllerChapter1 : MonoBehaviour
     [HideInInspector] public Barrel barrel;
     [HideInInspector] public TriggerBoats boats;
     [HideInInspector] public ResonanceTrigger resonance;
+    [HideInInspector] public TotemBehaviour currentTotem;
 
-    public enum InteractStates { Talks, Game, Camp, Barrel, Boats, Resonance, Sopka }
+    public enum InteractStates { Talks, Game, Camp, Barrel, Boats, Resonance, Sopka, Totems }
     public InteractStates interactsState = InteractStates.Game;
 
     private void Start()
@@ -61,6 +62,9 @@ public class CanvasControllerChapter1 : MonoBehaviour
                     break;
                 case InteractStates.Sopka:
                     sopkaEnd.EndGame();
+                    break;
+                case InteractStates.Totems:
+                    currentTotem.TakeTotem();
                     break;
             }
         }
