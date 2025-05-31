@@ -4,7 +4,7 @@ public class Barrel : MonoBehaviour
 {
     [SerializeField] private Animator anim;
     [SerializeField] private EnemyNPCBehaviour enemy;
-    [SerializeField] private Transform newPoint;
+    [SerializeField] private Transform newPoint, oldPoint;
     private bool isEnabled = true;
     private void OnTriggerEnter(Collider other)
     {
@@ -26,9 +26,20 @@ public class Barrel : MonoBehaviour
 
     public void BarrelAnim()
     {
-        anim.SetTrigger("fall");
+        anim.SetBool("fall", true);
         enemy.patrolPoints[0] = newPoint;
         enemy.isStanding = false;
         TaskManager.instance.tasks[1].CompleteTask();
+    }
+    public void Deactivate()
+    {
+        anim.SetBool("fall", false);
+        enemy.patrolPoints[0] = oldPoint;
+        enemy.currentState = EnemyNPCBehaviour.State.Patrolling;
+        enemy.agent.SetDestination(oldPoint.position);
+        enemy.GoToNextPoint();
+        enemy.agent.Warp(oldPoint.position);
+        enemy.isStanding = true;
+        isEnabled = true;
     }
 }

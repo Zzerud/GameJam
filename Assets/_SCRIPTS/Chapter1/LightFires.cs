@@ -35,4 +35,10 @@ public class LightFires : MonoBehaviour
         AttackOne.campsOpen++;
         if (AttackOne.campsOpen == 3) TaskManager.instance.tasks[0].CompleteTask();
     }
+    public void Deactivate()
+    {
+        activated = false;
+        fireVfx.SetActive(false);
+        AttackOne.campsOpen = 0;
+    }
 }

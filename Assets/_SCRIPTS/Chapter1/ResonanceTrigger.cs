@@ -31,4 +31,9 @@ public class ResonanceTrigger : MonoBehaviour
         ThirdPersonController.instance.StateCharacter(false);
         isCompleted = true;
     }
+
+    public void Deactivate()
+    {
+        isCompleted = false;
+    }
 }

@@ -39,4 +39,10 @@ public class TriggerBoats : MonoBehaviour
         holes.SetActive(true);
         CanvasControllerChapter1.instance.blackScreen.DOFade(0, .25f);
     }
+
+    public void Deactivate()
+    {
+        isCompleted = false;
+        holes.SetActive(false);
+    }
 }

@@ -171,7 +171,7 @@ public class ThirdPersonController : MonoBehaviour
     private void GroundCheck()
     {
         RaycastHit hit;
-        isGrounded = Physics.SphereCast(transform.position, 0.1f, Vector3.down, out hit, .2f, LayerMask.GetMask("Ground"));
+        isGrounded = Physics.SphereCast(transform.position, 0.1f, Vector3.down, out hit, .6f, LayerMask.GetMask("Ground"));
     }
 
     public void WhistleAt()

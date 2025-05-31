@@ -6,10 +6,10 @@ public class WindyController : MonoBehaviour
 {
     public static WindyController instance { get; private set; }
     [SerializeField] private Image windFill;
-    [SerializeField] private float currentFill;
+    public float currentFill;
     [SerializeField] private GameObject sopkaTrigger;
 
-    private bool ended = false;
+    public bool ended = false;
 
     private void Start()
     {

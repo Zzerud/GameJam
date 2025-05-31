@@ -18,7 +18,7 @@ public class EnemyNPCBehaviour : MonoBehaviour
     [SerializeField] private Vector3 rotationPerson;
     [SerializeField] private Animator animator;
 
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
     private int currentPatrolIndex;
     public float detectionMeter = 0;
     public float maxDetection = 100;

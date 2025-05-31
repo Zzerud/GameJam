@@ -9,7 +9,8 @@ public class RedVignetteManager : MonoBehaviour
     public static RedVignetteManager instance {  get; private set; }
 
     [SerializeField] private Image redVignette;
-    private float maxIntensity = 0;
+    public float maxIntensity = 0;
+    public bool retry = false;
 
     private void Start()
     {
@@ -27,8 +28,17 @@ public class RedVignetteManager : MonoBehaviour
     public void RegisterIntensity(float intensity)
     {
         maxIntensity = Mathf.Max(maxIntensity, intensity);
+        if (maxIntensity >= 1 && !retry)
+        {
+            StartStealthAgain.instance.GotYa();
+            retry = true;
+        }
     }
 
-    
+    public void Retry()
+    {
+        maxIntensity = 0;
+        redVignette.CrossFadeAlpha(0, 0, false);
+    }
     
 }

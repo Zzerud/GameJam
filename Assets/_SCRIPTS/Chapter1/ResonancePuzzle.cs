@@ -24,9 +24,9 @@ public class ResonancePuzzle : MonoBehaviour
     public float angleTolerance = 10f;
 
 
-    private bool isSolved = false;
+    public bool isSolved = false;
 
-    private void Start()
+    private void OnEnable()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;

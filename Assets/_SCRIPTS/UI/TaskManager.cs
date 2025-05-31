@@ -38,13 +38,40 @@ public class TaskManager : MonoBehaviour
             if (!string.IsNullOrWhiteSpace(taskTexts[i]))
             {
                 tasks[i].currentText = taskTexts[i];
-                tasks[i].gameObject.SetActive(true); 
+                tasks[i].gameObject.SetActive(true);
             }
         }
 
         foreach (Task task in tasks)
         {
-            if (task.gameObject.activeSelf) 
+            if (task.gameObject.activeSelf)
+                task.ShowTask();
+        }
+    }
+
+    public void Retry(string task1 = "", string task2 = "", string task3 = "", string task4 = "", string task5 = "")
+    {
+        string[] taskTexts = { task1, task2, task3, task4, task5 };
+
+        foreach (Task task in tasks)
+        {
+            task.gameObject.SetActive(false);
+            task.currentText = "";
+        }
+
+        for (int i = 0; i < tasks.Length; i++)
+        {
+            tasks[i].toggle.isOn = false;
+            if (!string.IsNullOrWhiteSpace(taskTexts[i]))
+            {
+                tasks[i].currentText = taskTexts[i];
+                tasks[i].gameObject.SetActive(true);
+            }
+        }
+
+        foreach (Task task in tasks)
+        {
+            if (task.gameObject.activeSelf)
                 task.ShowTask();
         }
     }
