@@ -7,6 +7,7 @@ public class SopkaTrigger : MonoBehaviour
 {
     [SerializeField] private PlayableDirector director;
     [SerializeField] private PlayableAsset asset;
+    [SerializeField] private GameObject boats;
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -32,6 +33,7 @@ public class SopkaTrigger : MonoBehaviour
         CanvasControllerChapter1.instance.blackScreen.DOFade(1, 1);
         ThirdPersonController.instance.StateCharacter(false);
         yield return new WaitForSeconds(1);
+        boats.SetActive(false);
         director.playableAsset = asset;
         director.Play();
     }
