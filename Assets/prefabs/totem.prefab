@@ -183,13 +183,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4667781192679798241}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.532, z: 0}
+  m_LocalRotation: {x: 0.70710677, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 2.756, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7418606352884027782}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!108 &265873247761431909
 Light:
   m_ObjectHideFlags: 0
@@ -199,12 +199,12 @@ Light:
   m_GameObject: {fileID: 4667781192679798241}
   m_Enabled: 1
   serializedVersion: 11
-  m_Type: 2
+  m_Type: 0
   m_Color: {r: 1, g: 0.9903545, b: 0.7028302, a: 1}
-  m_Intensity: 1
+  m_Intensity: 6
   m_Range: 10
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
+  m_SpotAngle: 79.77742
+  m_InnerSpotAngle: 53.29821
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -292,16 +292,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UID: -288575257
   color: {r: 1, g: 0.9903545, b: 0.7028302, a: 1}
-  intensity: 1
+  intensity: 6
   shadowSpread: 0.05
   cutoff: 10
   realisticFalloff: 1
   legacySampling: 1
   samples: 8
-  projMode: 0
-  cookie: {fileID: 0}
-  angle: 30
-  innerAngle: 0
+  projMode: 4
+  cookie: {fileID: 2800000, guid: 3a66602b8cc7fdd4ab57d07b4176432b, type: 3}
+  angle: 79.77742
+  innerAngle: 66.80864
   cubemap: {fileID: 0}
   iesFile: {fileID: 0}
   bitmask: 1

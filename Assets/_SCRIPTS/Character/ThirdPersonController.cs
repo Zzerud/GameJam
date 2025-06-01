@@ -31,8 +31,8 @@ public class ThirdPersonController : MonoBehaviour
     private float currentDistance;
 
     [Header("Movement Settings")]
-    [Range(.1f, 5.0f)][SerializeField] private float walkSpeed = 4f;
-    [Range(2.1f, 9.0f)][SerializeField] private float runSpeed = 6f;
+    [Range(.1f, 15.0f)][SerializeField] private float walkSpeed = 4f;
+    [Range(2.1f, 19.0f)][SerializeField] private float runSpeed = 6f;
 
     [Range(.1f, 2.0f)][SerializeField] private float jumpHeight = 1.2f;
     [SerializeField] private float gravity = -9.81f;

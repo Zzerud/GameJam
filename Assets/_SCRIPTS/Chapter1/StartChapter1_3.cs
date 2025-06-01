@@ -6,20 +6,40 @@ using UnityEngine.UI;
 
 public class StartChapter1_3 : MonoBehaviour
 {
+    public static StartChapter1_3 instance {  get; private set; }
+
     [SerializeField] private Image black;
     [SerializeField] private TMP_Text text;
-    [TextArea(10, 10)][SerializeField] private string[] textString;
+    [TextArea(10, 10)] public string[] textString;
+
+    private bool endChapter = false;
 
     private void Start()
     {
-        StartCoroutine(StartChapter());
+        if (instance == null)
+            instance = this;
+        else
+            Destroy(gameObject);
+
+        StartCoroutine(StartChapter(0));
+        ThirdPersonController.instance.StateCharacter(false);
     }
 
-    private IEnumerator StartChapter()
+    public void EndChapter()
     {
+        text.text = "";
+        black.DOFade(1, 2);
+        text.DOFade(1, 2);
+        StartCoroutine(StartChapter(2.5f));
+        endChapter = true;
+    }
+
+    private IEnumerator StartChapter(float timeToExecute)
+    {
+        yield return new WaitForSeconds(timeToExecute);
         for (int j = 0; j < textString.Length; j++)
         {
-            text.text = ""; // Очистка перед началом строки
+            text.text = "";
             int i = 0;
 
             while (i < textString[j].Length)
@@ -29,7 +49,6 @@ public class StartChapter1_3 : MonoBehaviour
                     int tagEnd = textString[j].IndexOf('>', i);
                     if (tagEnd == -1)
                     {
-                        Debug.LogWarning("Незакрытый тег в строке.");
                         break;
                     }
 
@@ -47,8 +66,15 @@ public class StartChapter1_3 : MonoBehaviour
 
             yield return new WaitForSeconds(2f);
         }
-
-        black.DOFade(0, 1);
-        text.DOFade(0, 1);
+        if (!endChapter)
+        {
+            black.DOFade(0, 1);
+            text.DOFade(0, 1);
+            ThirdPersonController.instance.StateCharacter(true);
+        }
+        else
+        {
+            Loading.instance.StartLoading("Chapter2_2");
+        }
     }
 }
