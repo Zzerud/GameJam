@@ -6,6 +6,7 @@ public class TotemsManager : MonoBehaviour
 
     public int totalTotems = 0;
     [SerializeField] private GameObject totemItems;
+    [SerializeField] private int neededTotems = 3;
     private void Start()
     {
         if (instance == null)
@@ -17,7 +18,7 @@ public class TotemsManager : MonoBehaviour
     public void CheckTotems()
     {
         totalTotems++;
-        if (totalTotems == 3)
+        if (totalTotems == neededTotems)
         {
             totemItems.SetActive(true);
         }
