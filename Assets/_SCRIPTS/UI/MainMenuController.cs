@@ -5,10 +5,13 @@ public class MainMenuController : MonoBehaviour
 {
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private CanvasGroup canvasGroup;
+    [SerializeField] private GameObject autors;
     public void StartGame()
     {
         Loading.instance.StartLoading("Chapter1_1");
         Settings.isGame = true;
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
     }
 
     public void SettingsOpen()
@@ -29,5 +32,10 @@ public class MainMenuController : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void Autors(bool open)
+    {
+        autors.SetActive(open);
     }
 }

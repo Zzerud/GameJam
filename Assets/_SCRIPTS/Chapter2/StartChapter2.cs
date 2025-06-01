@@ -17,9 +17,11 @@ public class StartChapter2 : MonoBehaviour
     private void Start()
     {
         StartCoroutine(StartChapter(0));
+        MusicManager.instance.ChangeMusic(0.5f, 0, 0.5f, music);
     }
     public void StartVriteTotems()
     {
+        text.text = "";
         black.DOFade(1, 1);
         text.DOFade(1, 1);
         StartCoroutine(StartChapter(1.5f));

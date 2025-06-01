@@ -25,6 +25,7 @@ public class EndChapter1_3 : MonoBehaviour
 
     public void InteractWithItems()
     {
+        gameObject.SetActive(false);
         totems.SetActive(true);
         ThirdPersonController.instance.StateCharacter(false);
         StartChapter1_3.instance.EndChapter();

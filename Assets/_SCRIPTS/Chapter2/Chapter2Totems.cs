@@ -43,5 +43,6 @@ public class Chapter2Totems : MonoBehaviour
             TaskManager.instance.tasks[i].CompleteTask();
         }
         TaskManager.instance.CheckTasks("бегите к лесным духам");
+        gameObject.SetActive(false);
     }
 }
