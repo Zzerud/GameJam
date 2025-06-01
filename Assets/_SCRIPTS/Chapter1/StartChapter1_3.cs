@@ -12,6 +12,7 @@ public class StartChapter1_3 : MonoBehaviour
     [SerializeField] private TMP_Text text;
     [TextArea(10, 10)] public string[] textString;
 
+    [SerializeField] private AudioClip music;
     private bool endChapter = false;
 
     private void Start()
@@ -23,6 +24,7 @@ public class StartChapter1_3 : MonoBehaviour
 
         StartCoroutine(StartChapter(0));
         ThirdPersonController.instance.StateCharacter(false);
+        MusicManager.instance.ChangeMusic(1, 0, 1, music);
     }
 
     public void EndChapter()

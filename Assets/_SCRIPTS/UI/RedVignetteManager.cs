@@ -39,6 +39,7 @@ public class RedVignetteManager : MonoBehaviour
     {
         maxIntensity = 0;
         redVignette.CrossFadeAlpha(0, 0, false);
+        retry = false;
     }
     
 }
